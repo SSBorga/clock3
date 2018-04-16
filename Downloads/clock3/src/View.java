@@ -9,34 +9,49 @@ import java.util.Observable;
 public class View implements Observer {
 
     AnalogueClockPanel panel1;
-
+DigitalClockPanel panel2;
     public View(Model m1) {
         //all about creating frame
         JFrame frame = new JFrame();
+        panel2 = new DigitalClockPanel(m1);
         panel1 = new AnalogueClockPanel(m1);
         frame.setTitle("Java Clock");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        
+        JMenuItem i1,i2;
         //we need a container to display elements.
         Container pane = frame.getContentPane();
         // Now menubar
         JMenuBar menubar = new JMenuBar();
-        JMenu menu1 =new JMenu("AnalogueClockFile.java");
-        JMenu menu2 =new JMenu("DigitalClockFile.java");
-        menubar.add(menu1);
-          menubar.add(menu2);
-          
+        panel1.setPreferredSize(new Dimension(300, 250));
+        JMenu menu =new JMenu("Menu");
+        i1=new JMenuItem("about");  
+          i2=new JMenuItem("Item 2");  
+        menubar.add(menu);
+        menu.add(i1);
+        menu.add(i2);
+          frame.setJMenuBar(menubar);
+          i1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame2 = new JFrame("clicked");
+                frame2.setVisible(true);
+                frame2.setSize(200, 200);
+                JLabel statusLabel = new JLabel("all the information about views.");
+                frame2.add(statusLabel);
+            }
+          });
         //add panell to the centre
-          panel1.setPreferredSize(new Dimension(100, 50));
-          pane.add(panel1, BorderLayout.CENTER);
+          panel1.setPreferredSize(new Dimension(300, 250));
+          pane.add(panel1, BorderLayout.AFTER_LINE_ENDS);
         //adding buttons.This is header. 
-        JButton button1 = new JButton("clock");
-        pane.add(button1, BorderLayout.PAGE_START);
+        //JButton button1 = new JButton("clock");
+         panel2.setPreferredSize(new Dimension(300, 250));
+        pane.add(panel2, BorderLayout.CENTER);
 
-        JButton button2 = new JButton("Menu");
-        pane.add(button2, BorderLayout.LINE_START);
+       // JButton button2 = new JButton("Menu");
+        pane.add(menubar, BorderLayout.LINE_START);
        
 
        //This is about button which on click displays information.
