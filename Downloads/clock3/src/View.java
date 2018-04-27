@@ -45,13 +45,14 @@ DigitalClockPanel panel2;
         //add panell to the centre
           panel1.setPreferredSize(new Dimension(300, 250));
           pane.add(panel1, BorderLayout.AFTER_LINE_ENDS);
+           
         //adding buttons.This is header. 
         //JButton button1 = new JButton("clock");
          panel2.setPreferredSize(new Dimension(300, 250));
-        pane.add(panel2, BorderLayout.CENTER);
+        pane.add(menubar, BorderLayout.CENTER);
 
        // JButton button2 = new JButton("Menu");
-        pane.add(menubar, BorderLayout.LINE_START);
+        pane.add(panel2, BorderLayout.LINE_START);
        
 
        //This is about button which on click displays information.

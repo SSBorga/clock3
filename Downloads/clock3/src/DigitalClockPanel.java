@@ -1,4 +1,5 @@
 
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -8,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 import java.util.Calendar;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -33,7 +35,8 @@ public class DigitalClockPanel extends ClockPanel {
         JTextField timeF =new JTextField(10);
     
         label.setFont(new Font("Arial",Font.PLAIN,48));
-        panel.add(label);
+        panel.add(label,BorderLayout.CENTER);
+         
         add(panel);
         Timer t =new Timer(1000,new Listener());
         t.start();
